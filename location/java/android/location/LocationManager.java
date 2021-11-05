@@ -791,6 +791,7 @@ public class LocationManager {
     @RequiresPermission(anyOf = {ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION})
     @Nullable
     public Location getLastKnownLocation(@NonNull String provider) {
+        android.util.SeempLog.record(46);
         return getLastKnownLocation(provider, new LastLocationRequest.Builder().build());
     }
 
@@ -977,6 +978,7 @@ public class LocationManager {
     @RequiresPermission(anyOf = {ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION})
     public void requestSingleUpdate(
             @NonNull String provider, @NonNull LocationListener listener, @Nullable Looper looper) {
+        android.util.SeempLog.record(64);
         Preconditions.checkArgument(provider != null, "invalid null provider");
 
         Handler handler = looper == null ? new Handler() : new Handler(looper);
@@ -1016,6 +1018,7 @@ public class LocationManager {
             @NonNull Criteria criteria,
             @NonNull LocationListener listener,
             @Nullable Looper looper) {
+        android.util.SeempLog.record(64);
         Preconditions.checkArgument(criteria != null, "invalid null criteria");
 
         Handler handler = looper == null ? new Handler() : new Handler(looper);
@@ -1049,6 +1052,7 @@ public class LocationManager {
     @RequiresPermission(anyOf = {ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION})
     public void requestSingleUpdate(@NonNull String provider,
             @NonNull PendingIntent pendingIntent) {
+        android.util.SeempLog.record(64);
         Preconditions.checkArgument(provider != null, "invalid null provider");
 
         requestLocationUpdates(
@@ -1083,6 +1087,7 @@ public class LocationManager {
     @RequiresPermission(anyOf = {ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION})
     public void requestSingleUpdate(@NonNull Criteria criteria,
             @NonNull PendingIntent pendingIntent) {
+        android.util.SeempLog.record(64);
         Preconditions.checkArgument(criteria != null, "invalid null criteria");
 
         requestLocationUpdates(
@@ -1119,6 +1124,7 @@ public class LocationManager {
     @RequiresPermission(anyOf = {ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION})
     public void requestLocationUpdates(@NonNull String provider, long minTimeMs, float minDistanceM,
             @NonNull LocationListener listener) {
+        android.util.SeempLog.record(47);
         requestLocationUpdates(provider, minTimeMs, minDistanceM, listener, null);
     }
 
@@ -1147,6 +1153,7 @@ public class LocationManager {
     @RequiresPermission(anyOf = {ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION})
     public void requestLocationUpdates(@NonNull String provider, long minTimeMs, float minDistanceM,
             @NonNull LocationListener listener, @Nullable Looper looper) {
+        android.util.SeempLog.record(47);
         Handler handler = looper == null ? new Handler() : new Handler(looper);
         requestLocationUpdates(provider, minTimeMs, minDistanceM, new HandlerExecutor(handler),
                 listener);
@@ -1181,6 +1188,7 @@ public class LocationManager {
             float minDistanceM,
             @NonNull @CallbackExecutor Executor executor,
             @NonNull LocationListener listener) {
+        android.util.SeempLog.record(47);
         Preconditions.checkArgument(provider != null, "invalid null provider");
 
         requestLocationUpdates(
@@ -1218,6 +1226,7 @@ public class LocationManager {
     public void requestLocationUpdates(long minTimeMs, float minDistanceM,
             @NonNull Criteria criteria, @NonNull LocationListener listener,
             @Nullable Looper looper) {
+        android.util.SeempLog.record(47);
         Handler handler = looper == null ? new Handler() : new Handler(looper);
         requestLocationUpdates(minTimeMs, minDistanceM, criteria, new HandlerExecutor(handler),
                 listener);
@@ -1256,6 +1265,7 @@ public class LocationManager {
             @NonNull Criteria criteria,
             @NonNull @CallbackExecutor Executor executor,
             @NonNull LocationListener listener) {
+        android.util.SeempLog.record(47);
         Preconditions.checkArgument(criteria != null, "invalid null criteria");
 
         requestLocationUpdates(
@@ -1284,6 +1294,7 @@ public class LocationManager {
     @RequiresPermission(anyOf = {ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION})
     public void requestLocationUpdates(@NonNull String provider, long minTimeMs, float minDistanceM,
             @NonNull PendingIntent pendingIntent) {
+        android.util.SeempLog.record(47);
         Preconditions.checkArgument(provider != null, "invalid null provider");
 
         requestLocationUpdates(
@@ -1318,6 +1329,7 @@ public class LocationManager {
     @RequiresPermission(anyOf = {ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION})
     public void requestLocationUpdates(long minTimeMs, float minDistanceM,
             @NonNull Criteria criteria, @NonNull PendingIntent pendingIntent) {
+        android.util.SeempLog.record(47);
         Preconditions.checkArgument(criteria != null, "invalid null criteria");
         requestLocationUpdates(
                 FUSED_PROVIDER,
@@ -1356,6 +1368,7 @@ public class LocationManager {
             @Nullable LocationRequest locationRequest,
             @NonNull LocationListener listener,
             @Nullable Looper looper) {
+        android.util.SeempLog.record(47);
         Handler handler = looper == null ? new Handler() : new Handler(looper);
         requestLocationUpdates(locationRequest, new HandlerExecutor(handler), listener);
     }
@@ -1386,6 +1399,7 @@ public class LocationManager {
             @Nullable LocationRequest locationRequest,
             @NonNull @CallbackExecutor Executor executor,
             @NonNull LocationListener listener) {
+        android.util.SeempLog.record(47);
         if (locationRequest == null) {
             locationRequest = LocationRequest.create();
         }
@@ -1529,6 +1543,7 @@ public class LocationManager {
     public void requestLocationUpdates(@NonNull String provider,
             @NonNull LocationRequest locationRequest,
             @NonNull PendingIntent pendingIntent) {
+        android.util.SeempLog.record(47);
         Preconditions.checkArgument(provider != null, "invalid null provider");
         Preconditions.checkArgument(locationRequest != null, "invalid null location request");
         Preconditions.checkArgument(pendingIntent != null, "invalid null pending intent");
@@ -1950,6 +1965,7 @@ public class LocationManager {
      */
     public boolean sendExtraCommand(
             @NonNull String provider, @NonNull String command, @Nullable Bundle extras) {
+        android.util.SeempLog.record(48);
         Preconditions.checkArgument(provider != null, "invalid null provider");
         Preconditions.checkArgument(command != null, "invalid null command");
 
@@ -2183,8 +2199,8 @@ public class LocationManager {
     @RequiresPermission(anyOf = {ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION})
     public void addProximityAlert(double latitude, double longitude, float radius, long expiration,
             @NonNull PendingIntent pendingIntent) {
+        android.util.SeempLog.record(45);
         Preconditions.checkArgument(pendingIntent != null, "invalid null pending intent");
-
         if (Compatibility.isChangeEnabled(BLOCK_UNTARGETED_PENDING_INTENTS)) {
             Preconditions.checkArgument(pendingIntent.isTargetedToPackage(),
                     "pending intent must be targeted to a package");
@@ -2340,6 +2356,7 @@ public class LocationManager {
     @Deprecated
     @RequiresPermission(ACCESS_FINE_LOCATION)
     public boolean addGpsStatusListener(GpsStatus.Listener listener) {
+        android.util.SeempLog.record(43);
         if (Compatibility.isChangeEnabled(BLOCK_GPS_STATUS_USAGE)) {
             throw new UnsupportedOperationException(
                     "GpsStatus APIs not supported, please use GnssStatus APIs instead");
@@ -2450,6 +2467,7 @@ public class LocationManager {
     @Deprecated
     @RequiresPermission(ACCESS_FINE_LOCATION)
     public boolean addNmeaListener(@NonNull GpsStatus.NmeaListener listener) {
+        android.util.SeempLog.record(44);
         return false;
     }
 
